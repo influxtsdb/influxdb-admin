@@ -3,26 +3,18 @@ package admin_test
 import (
 	"testing"
 
-	"github.com/BurntSushi/toml"
-	"github.com/influxdata/influxdb/services/admin"
+	"github.com/influxtsdb/influxdb-admin/admin"
 )
 
 func TestConfig_Parse(t *testing.T) {
 	// Parse configuration.
 	var c admin.Config
-	if _, err := toml.Decode(`
-enabled = true
-bind-address = ":8083"
-https-enabled = true
-https-certificate = "/dev/null"
-`, &c); err != nil {
-		t.Fatal(err)
-	}
+	c.BindAddress = ":8083"
+	c.HTTPSEnabled = true
+	c.HTTPSCertificate = "/dev/null"
 
 	// Validate configuration.
-	if c.Enabled != true {
-		t.Fatalf("unexpected enabled: %v", c.Enabled)
-	} else if c.BindAddress != ":8083" {
+	if c.BindAddress != ":8083" {
 		t.Fatalf("unexpected bind address: %s", c.BindAddress)
 	} else if c.HTTPSEnabled != true {
 		t.Fatalf("unexpected https enabled: %v", c.HTTPSEnabled)

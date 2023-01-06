@@ -1,16 +1,16 @@
-package admin // import "github.com/influxdata/influxdb/services/admin"
+package admin // import "github.com/influxtsdb/influxdb-admin/admin"
 
 import (
 	"crypto/tls"
 	"fmt"
+	"log"
 	"net"
 	"net/http"
 	"strings"
 
 	// Register static assets via statik.
-	_ "github.com/influxdata/influxdb/services/admin/statik"
+	_ "github.com/influxtsdb/influxdb-admin/admin/statik"
 	"github.com/rakyll/statik/fs"
-	"github.com/uber-go/zap"
 )
 
 // Service manages the listener for an admin endpoint.
@@ -21,8 +21,6 @@ type Service struct {
 	cert     string
 	err      chan error
 	version  string
-
-	logger zap.Logger
 }
 
 // NewService returns a new instance of Service.
@@ -33,14 +31,12 @@ func NewService(c Config) *Service {
 		cert:    c.HTTPSCertificate,
 		err:     make(chan error),
 		version: c.Version,
-		logger:  zap.New(zap.NullEncoder()),
 	}
 }
 
 // Open starts the service
 func (s *Service) Open() error {
-	s.logger.Info("Starting admin service")
-	s.logger.Info("DEPRECATED: This plugin is deprecated as of 1.1.0 and will be removed in a future release")
+	log.Print("Starting admin service")
 
 	// Open listener.
 	if s.https {
@@ -56,7 +52,7 @@ func (s *Service) Open() error {
 			return err
 		}
 
-		s.logger.Info(fmt.Sprint("Listening on HTTPS: ", listener.Addr().String()))
+		log.Print(fmt.Sprint("Listening on HTTPS: ", listener.Addr().String()))
 		s.listener = listener
 	} else {
 		listener, err := net.Listen("tcp", s.addr)
@@ -64,7 +60,7 @@ func (s *Service) Open() error {
 			return err
 		}
 
-		s.logger.Info(fmt.Sprint("Listening on HTTP: ", listener.Addr().String()))
+		log.Print(fmt.Sprint("Listening on HTTP: ", listener.Addr().String()))
 		s.listener = listener
 	}
 
@@ -79,11 +75,6 @@ func (s *Service) Close() error {
 		return s.listener.Close()
 	}
 	return nil
-}
-
-// WithLogger sets the logger for the service
-func (s *Service) WithLogger(log zap.Logger) {
-	s.logger = log.With(zap.String("service", "admin"))
 }
 
 // Err returns a channel for fatal errors that occur on the listener.

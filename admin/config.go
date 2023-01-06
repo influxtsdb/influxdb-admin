@@ -7,11 +7,10 @@ const (
 
 // Config represents the configuration for the admin service.
 type Config struct {
-	Enabled          bool   `toml:"enabled"`
-	BindAddress      string `toml:"bind-address"`
-	HTTPSEnabled     bool   `toml:"https-enabled"`
-	HTTPSCertificate string `toml:"https-certificate"`
-	Version          string `toml:"-"`
+	BindAddress      string
+	HTTPSEnabled     bool
+	HTTPSCertificate string
+	Version          string
 }
 
 // NewConfig returns an instance of Config with defaults.
