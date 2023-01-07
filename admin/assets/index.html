@@ -128,16 +128,26 @@
                           <li><label data-query="DROP DATABASE &quot;db_name&quot;">Drop Database</label></li>
                           <li class="divider"></li>
                           <li><label data-query="SHOW MEASUREMENTS">Show Measurements</label></li>
+                          <li><label data-query="DROP MEASUREMENT &quot;measurement_name&quot;">Drop Measurement</label></li>
+                          <li class="divider"></li>
+                          <li><label data-query="SHOW FIELD KEYS FROM &quot;measurement_name&quot;">Show Field Keys</label></li>
                           <li><label data-query="SHOW TAG KEYS FROM &quot;measurement_name&quot;">Show Tag Keys</label></li>
                           <li><label data-query="SHOW TAG VALUES FROM &quot;measurement_name&quot; WITH KEY = &quot;tag_key&quot;">Show Tag Values</label></li>
                           <li class="divider"></li>
-                          <li><label data-query="SHOW RETENTION POLICIES ON &quot;db_name&quot;">Show Retention Policies</label></li>
-                          <li><label data-query="CREATE RETENTION POLICY &quot;rp_name&quot; ON &quot;db_name&quot; DURATION 30d REPLICATION 1 DEFAULT">Create Retention Policy</label></li>
+                          <li><label data-query="SHOW RETENTION POLICIES">Show Retention Policies</label></li>
+                          <li><label data-query="CREATE RETENTION POLICY &quot;rp_name&quot; ON &quot;db_name&quot; DURATION 30d REPLICATION 1 SHARD DURATION 1d DEFAULT">Create Retention Policy</label></li>
+                          <li><label data-query="ALTER RETENTION POLICY &quot;rp_name&quot; ON &quot;db_name&quot; DURATION 30d REPLICATION 1 SHARD DURATION 1d DEFAULT">Alter Retention Policy</label></li>
                           <li><label data-query="DROP RETENTION POLICY &quot;rp_name&quot; ON &quot;db_name&quot;">Drop Retention Policy</label></li>
                           <li class="divider"></li>
                           <li><label data-query="SHOW CONTINUOUS QUERIES">Show Continuous Queries</label></li>
                           <li><label data-query="CREATE CONTINUOUS QUERY &quot;cq_name&quot; ON &quot;db_name&quot; BEGIN SELECT min(&quot;field&quot;) INTO &quot;target_measurement&quot; FROM &quot;current_measurement&quot; GROUP BY time(30m) END">Create Continuous Query</label></li>
                           <li><label data-query="DROP CONTINUOUS QUERY &quot;cq_name&quot; ON &quot;db_name&quot;">Drop Continuous Query</label></li>
+                          <li class="divider"></li>
+                          <li><label data-query="SHOW SHARDS">Show Shards</label></li>
+                          <li><label data-query="DROP SHARD shard_id">Drop Shard</label></li>
+                          <li><label data-query="SHOW SERIES FROM &quot;measurement_name&quot;">Show Series</label></li>
+                          <li><label data-query="DROP SERIES FROM &quot;measurement_name&quot; WHERE tag_key = &apos;tag_value&apos;">Drop Series</label></li>
+                          <li><label data-query="DELETE FROM &quot;measurement_name&quot; WHERE time < &apos;2000-01-01T00:00:00Z&apos;">Delete</label></li>
                           <li class="divider"></li>
                           <li><label data-query="SHOW USERS">Show Users</label></li>
                           <li><label data-query="CREATE USER &quot;username&quot; WITH PASSWORD 'password'">Create User</label></li>
