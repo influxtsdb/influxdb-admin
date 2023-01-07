@@ -7,7 +7,8 @@
 ![GitHub stars](https://img.shields.io/github/stars/influxtsdb/influxdb-admin.svg?label=github%20stars&logo=github)
 [![Docker pulls](https://img.shields.io/docker/pulls/influxtsdb/influxdb-admin.svg)](https://hub.docker.com/r/influxtsdb/influxdb-admin)
 
-This is the built-in admin interface in [InfluxDB v1.2.4](https://github.com/influxdata/influxdb/tree/v1.2.4/services/admin), which was removed from InfluxDB v1.3.
+This is the built-in admin interface in [InfluxDB v1.2.4](https://github.com/influxdata/influxdb/tree/v1.2.4/services/admin),
+which was removed from InfluxDB v1.3 and is a completely independent service from now.
 
 Related official documentation: [Web Admin Interface](https://archive.docs.influxdata.com/influxdb/v1.2/tools/web_admin/)
 
@@ -62,3 +63,9 @@ $ make linux
 $ # cross-build all platforms
 $ make release
 ```
+
+## Related projects
+
+- [InfluxDB](https://github.com/influxdata/influxdb/tree/master-1.x): An Open-Source Time Series Database from InfluxData
+- [InfluxDB Cluster](https://github.com/chengshiwen/influxdb-cluster): An Open-Source Distributed Time Series Database, Open Source Alternative to InfluxDB Enterprise
+- [InfluxDB Proxy](https://github.com/chengshiwen/influx-proxy): A Layer to InfluxDB with High Availability and Consistent Hash
