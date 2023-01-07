@@ -369,8 +369,7 @@ var getClientVersion = function () {
         var version = xhr.getResponseHeader('X-InfluxDB-Version');
         if (version.indexOf("unknown") == -1) {
             console.log('got client version v'+version);
-            version = 'v' + truncateVersion(version);
-            $('#influxdb-doc-link').attr('href', 'https://docs.influxdata.com/influxdb/'+version+'/introduction/getting_started/');
+            version = 'v' + version;
         }
         $('.influxdb-client-version').html(version);
     });
