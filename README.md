@@ -7,9 +7,9 @@
 ![GitHub stars](https://img.shields.io/github/stars/influxtsdb/influxdb-admin.svg?label=github%20stars&logo=github)
 [![Docker pulls](https://img.shields.io/docker/pulls/influxtsdb/influxdb-admin.svg)](https://hub.docker.com/r/influxtsdb/influxdb-admin)
 
-This is the built-in admin interface that ships with InfluxDB. The service is intended to have little overhead and minimal preprocessing steps.
+This is the built-in admin interface in [InfluxDB v1.2.4](https://github.com/influxdata/influxdb/tree/v1.2.4/services/admin), which was removed from InfluxDB v1.3.
 
-Reference: [Web Admin Interface](https://archive.docs.influxdata.com/influxdb/v1.2/tools/web_admin/)
+Related official documentation: [Web Admin Interface](https://archive.docs.influxdata.com/influxdb/v1.2/tools/web_admin/)
 
 ## Quickstart
 
@@ -25,6 +25,14 @@ Download one of the [pre-built releases](https://github.com/influxtsdb/influxdb-
 
 ```sh
 $ ./influxdb-admin
+```
+
+### Quickstart by kubernetes & helm chart
+
+Download [InfluxDB Admin Helm chart](https://github.com/influxtsdb/helm-charts/tree/master/charts/influxdb-admin):
+
+```sh
+$ helm install influxdb-admin ./influxdb-admin
 ```
 
 ## Usage

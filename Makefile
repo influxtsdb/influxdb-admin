@@ -9,7 +9,7 @@ GOX         = go run github.com/mitchellh/gox
 TARGETS     := darwin/amd64 darwin/arm64 linux/amd64 linux/arm64 windows/amd64
 DIST_DIRS   := find * -maxdepth 0 -type d -exec
 
-.PHONY: build linux cross-build release test run lint down tidy clean
+.PHONY: build linux cross-build release test run statik lint down tidy clean
 
 all: build
 
@@ -38,6 +38,9 @@ test:
 
 run:
 	go run main.go
+
+statik:
+	go generate ./admin
 
 lint:
 	golangci-lint run --enable=golint --disable=errcheck --disable=typecheck && goimports -l -w . && go fmt ./... && go vet ./...
